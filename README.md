@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # todolist_app
 
 > Todo-list en vue.js avec Nuxt et Vuex
@@ -20,3 +21,7 @@ $ npm run generate
 ```
 
 For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).
+=======
+# Todolist_App
+Todo-list en vue.js avec Nuxt et Vuex
+>>>>>>> 04754e5f8997d50f5f24ac083e96a565b63c74c4
