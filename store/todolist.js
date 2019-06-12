@@ -1,10 +1,14 @@
 export const state = () => ({
-  list: []
+  list: [],
+  editing: null
 })
 
 export const getters = {
   allTodos: (state) => {
     return state.list
+  },
+  editingTodo: (state) => {
+    return state.editing
   }
 }
 
@@ -23,6 +27,10 @@ export const mutations = {
   remove(state, todo) {
     // Remove the right element
     state.list.splice(state.list.indexOf(todo), 1)
+  },
+  editTodo(state, todo) {
+    // State editing stores actual todo-element
+    state.editing = todo
   }
 }
 

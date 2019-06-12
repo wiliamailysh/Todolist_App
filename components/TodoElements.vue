@@ -8,9 +8,20 @@
         </v-flex>
         <!-- Text-content element  -->
         <v-flex xs8>
-          <div class="headline" :class="{done: todo.done}">
+          <!-- Text section with text of the task -->
+          <div
+            v-show="todo !== editingTodo"
+            class="headline"
+            :class="{done: todo.done}"
+            @dblclick="editTodo(todo, $event)">
             {{ todo.text }}
           </div>
+
+          <!-- Editing section, active when dblclick -->
+          <input
+            v-show="todo === editingTodo"
+            type="text">
+        </v-flex>
         </v-flex>
         <!-- Actions -->
         <v-flex xs3>
@@ -33,7 +44,8 @@ export default {
   },
   computed: {
     ...mapGetters({
-      allTodos: 'todolist/allTodos'
+      allTodos: 'todolist/allTodos',
+      editingTodo: 'todolist/editingTodo'
     })
   },
   methods: {
@@ -41,7 +53,11 @@ export default {
       addTodo: 'todolist/addTodo',
       toggle: 'todolist/toggle',
       removeTodo: 'todolist/removeTodo'
-    })
+    }),
+    editTodo(todo, event) {
+      this.$store.commit('todolist/editTodo', todo)
+      event.target.nextSibling.nextSibling.value = todo.text
+    }
   }
 }
 </script>
