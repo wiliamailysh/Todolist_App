@@ -1,13 +1,16 @@
 <template>
   <div>
-    <v-card v-for="todo in allTodos" :key="todo.id">
-      <v-layout row wrap>
+    <v-card v-for="todo in allTodos" :key="todo.id" class="pa-3 my-4">
+      <v-layout row wrap align-content>
+        <!-- Chekbox element -->
         <v-flex xs1>
           <input type="checkbox" :checked="todo.done" @change="toggle(todo)">
         </v-flex>
+        <!-- Text-content element  -->
         <v-flex xs8>
           {{ todo.text }}
         </v-flex>
+        <!-- Actions -->
         <v-flex xs3>
 
         </v-flex>
