@@ -14,3 +14,13 @@ export const mutations = {
     })
   }
 }
+
+export const actions = {
+  addTodo (context, e) {
+    context.commit('addTodo', {
+      text: e.target.value,
+    })
+    // Clear input value after added task
+    e.target.value = ""
+  }
+}
