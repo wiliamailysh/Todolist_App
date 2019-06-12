@@ -15,6 +15,10 @@ export const mutations = {
       id: state.list.length === 0 ? 1 : state.list[0].id + 1,
       done: false
     })
+  },
+  toggle(state, todo) {
+    // Switch todo state
+    todo.done = !todo.done
   }
 }
 
