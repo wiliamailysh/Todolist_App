@@ -10,7 +10,7 @@ const match = function (myExpresion, comparedExpression, tagArray, tagToAdd) {
 
 export const state = () => ({
   list: [
-    { text: 'Obtenir le poste de développeur chez Clémentine', id: 4, done: false, tag: ['important'] },
+    { text: 'Obtenir le poste de développeur Front-end chez Clémentine', id: 4, done: false, tag: ['important'] },
     { text: 'Faire une application Todo-list avec Vue.js', id: 2, done: true, tag: [] },
     { text: 'M\'entrainer au baby-foot pour le grand séminaire', id: 3, done: false, tag: ['later'] },
     { text: 'Repeindre la salle de bain', id: 4, done: false, tag: [] }

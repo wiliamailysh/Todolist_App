@@ -8,11 +8,11 @@
     >
       <v-layout row wrap align-center>
         <!-- Chekbox element -->
-        <v-flex xs1>
+        <v-flex xs12 sm1>
           <input type="checkbox" :checked="todo.done" @change="toggle(todo)">
         </v-flex>
         <!-- Text-content element  -->
-        <v-flex xs8>
+        <v-flex xs12 sm11 md8>
           <!-- Text section with text of the task -->
           <div
             v-show="todo !== editingTodo"
@@ -35,7 +35,7 @@
         </v-flex>
         </v-flex>
         <!-- Actions -->
-        <v-flex xs3>
+        <v-flex xs12 md3>
           <div class="right">
             <!-- Later element chip -->
             <v-chip
