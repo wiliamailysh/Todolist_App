@@ -50,7 +50,6 @@
                 query_builder
               </v-icon>
               <div v-show="todo.tag.includes('later')">
-                <span class="ml-2 hidden-lg-and-down">Later</span>
                 <v-icon
                   small
                   class="ml-2"
@@ -80,7 +79,6 @@
                 label_important
               </v-icon>
               <div v-show="todo.tag.includes('important')">
-                <span class="ml-2 hidden-lg-and-down">Important</span>
                 <v-icon
                   small
                   class="ml-2"
