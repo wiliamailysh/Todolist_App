@@ -29,5 +29,8 @@ export const actions = {
     })
     // Clear input value after added task
     e.target.value = ''
+  },
+  toggle(context, e) {
+    context.commit('toggle', e)
   }
 }
