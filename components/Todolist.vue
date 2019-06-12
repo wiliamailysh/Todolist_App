@@ -33,3 +33,5 @@ export default {
   }
 }
 </script>
+
+<style src="~/assets/todolist.css"></style>
