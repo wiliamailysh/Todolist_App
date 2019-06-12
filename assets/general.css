@@ -1,0 +1,4 @@
+/* No focus on all inputs */
+:focus {
+	outline: 0;
+}
