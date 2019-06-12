@@ -88,7 +88,8 @@ export default {
       remainingTodosCount: 'todolist/remainingTodosCount',
       importantTodoCount: 'todolist/importantTodoCount',
       laterTodoCount: 'todolist/laterTodoCount',
-      filter: 'todolist/filter'
+      filter: 'todolist/filter',
+      filteredTodos: 'todolist/filteredTodos'
     })
   },
   methods: {

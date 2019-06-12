@@ -11,7 +11,7 @@ const match = function (myExpresion, comparedExpression, tagArray, tagToAdd) {
 export const state = () => ({
   list: [],
   editing: null,
-  filter: 'all'
+  filter: 'todo'
 })
 
 export const getters = {
@@ -71,6 +71,11 @@ export const mutations = {
       done: false,
       tag: tagArray
     })
+
+    // Reset filter to all-tasks
+    if (state.filter !== 'todo') {
+      state.filter = 'all'
+    }
   },
   toggle(state, todo) {
     // Switch todo state
@@ -79,6 +84,30 @@ export const mutations = {
   remove(state, todo) {
     // Remove the right element
     state.list.splice(state.list.indexOf(todo), 1)
+
+    let filteredTodos = []
+
+    if (state.filter === 'todo') {
+      filteredTodos = state.list.filter(todo => !todo.done)
+    } else if (state.filter === 'done') {
+      filteredTodos = state.list.filter(todo => todo.done)
+    } else if (state.filter === 'important') {
+      filteredTodos = state.list.filter(todo => todo.tag.includes('important'))
+    } else if (state.filter === ('later')) {
+      filteredTodos = state.list.filter(todo => todo.tag.includes('later'))
+    } else {
+      filteredTodos = state.list
+    }
+
+    if (filteredTodos.length === 0) {
+      if (state.list.filter(todo => todo.done).length === 0) {
+        state.filter = 'todo'
+      } else if ((state.list.filter(todo => !todo.done).length === 0)) {
+        state.filter = 'done'
+      } else {
+        state.filter = 'all'
+      }
+    }
   },
   editTodo(state, todo) {
     // State editing stores actual todo-element
