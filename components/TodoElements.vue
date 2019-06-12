@@ -8,7 +8,9 @@
         </v-flex>
         <!-- Text-content element  -->
         <v-flex xs8>
-          {{ todo.text }}
+          <div class="headline" :class="{done: todo.done}">
+            {{ todo.text }}
+          </div>
         </v-flex>
         <!-- Actions -->
         <v-flex xs3>
@@ -40,4 +42,5 @@ export default {
 }
 </script>
 
+<style src="~/assets/elements.css"></style>
 <style src="~/assets/checkbox.css"></style>
