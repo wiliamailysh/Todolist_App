@@ -112,6 +112,10 @@ export const mutations = {
   addTag(state, payload) {
     const todo = state.list.find(todo => todo.id === payload.id)
     todo.tag.push(payload.tagToAdd)
+  },
+  changeFilter(state, newFilter) {
+    // Switch filter
+    state.filter = newFilter
   }
 }
 
@@ -131,5 +135,8 @@ export const actions = {
   },
   doneEdit(context) {
     context.commit('doneEdit')
+  },
+  changeFilter(context, newFilter) {
+    context.commit('changeFilter', newFilter)
   }
 }

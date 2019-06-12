@@ -4,6 +4,7 @@
       <v-chip
         v-show="allTodosCount > remainingTodosCount && allTodosCount !== doneTodosCount"
         class="red white--text"
+        @click="changeFilter('all')"
       >
         <v-avatar
           class="red darken-4"
@@ -16,6 +17,7 @@
       <v-chip
         v-show="remainingTodosCount > 0"
         class="green white--text"
+        @click="changeFilter('todo')"
       >
         <v-avatar
           class="green darken-4"
@@ -28,6 +30,7 @@
       <v-chip
         v-show="doneTodosCount > 0"
         class="orange white--text"
+        @click="changeFilter('done')"
       >
         <v-avatar
           class="orange darken-4"
@@ -42,6 +45,7 @@
         <v-chip
           v-show="laterTodoCount > 0"
           class="orange lighten-1 white--text"
+          @click="changeFilter('later')"
         >
           <v-avatar
             class="orange darken-4"
@@ -53,6 +57,7 @@
         <v-chip
           v-show="importantTodoCount > 0"
           class="red lighten-1 white--text"
+          @click="changeFilter('important')"
         >
           <v-avatar
             class="red darken-4"
@@ -68,7 +73,7 @@
 
 <script>
 // import mapHelpers
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   computed: {
@@ -78,6 +83,11 @@ export default {
       remainingTodosCount: 'todolist/remainingTodosCount',
       importantTodoCount: 'todolist/importantTodoCount',
       laterTodoCount: 'todolist/laterTodoCount'
+    })
+  },
+  methods: {
+    ...mapActions({
+      changeFilter: 'todolist/changeFilter'
     })
   }
 }
