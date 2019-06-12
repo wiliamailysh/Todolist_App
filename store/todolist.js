@@ -14,10 +14,29 @@ export const getters = {
 
 export const mutations = {
   addTodo(state, payload) {
+    const tagArray = []
+
+    // Check if input value contain #important
+    if (payload.text.match(/#important/gm)) {
+      tagArray.push('important')
+
+      // Remove #important from text-value
+      payload.text = payload.text.replace('#important', '')
+    }
+
+    // Check if input value contain #later
+    if (payload.text.match(/#later/gm)) {
+      tagArray.push('later')
+
+      // Remove #later from text-value
+      payload.text = payload.text.replace('#later', '')
+    }
+
     state.list.unshift({
       text: payload.text,
       id: state.list.length === 0 ? 1 : state.list[0].id + 1,
-      done: false
+      done: false,
+      tag: tagArray
     })
   },
   toggle(state, todo) {
