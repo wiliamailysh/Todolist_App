@@ -148,6 +148,13 @@ export const mutations = {
   changeFilter(state, newFilter) {
     // Switch filter
     state.filter = newFilter
+  },
+  removeDoneTodos(state) {
+    // Filter todo-list to remove done tasks
+    state.list = state.list.filter(todo => !todo.done)
+
+    // Reset filter to todo task
+    state.filter = 'todo'
   }
 }
 
@@ -170,5 +177,8 @@ export const actions = {
   },
   changeFilter(context, newFilter) {
     context.commit('changeFilter', newFilter)
+  },
+  removeDoneTodos(context) {
+    context.commit('removeDoneTodos')
   }
 }

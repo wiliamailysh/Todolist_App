@@ -42,6 +42,9 @@
         </v-avatar>
         <span>Faites</span>
       </v-chip>
+      <v-chip color="grey" text-color="white" v-show="doneTodosCount > 0" @click="removeDoneTodos">
+        <span>Supprimer les tâches finies</span>
+      </v-chip>
     </v-flex>
     <v-flex xs6>
       <div class="right">
@@ -94,7 +97,8 @@ export default {
   },
   methods: {
     ...mapActions({
-      changeFilter: 'todolist/changeFilter'
+      changeFilter: 'todolist/changeFilter',
+      removeDoneTodos: 'todolist/removeDoneTodos'
     })
   }
 }
