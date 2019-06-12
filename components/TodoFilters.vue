@@ -4,6 +4,7 @@
       <v-chip
         v-show="allTodosCount > remainingTodosCount && allTodosCount !== doneTodosCount"
         class="red white--text"
+        :class="[filter === 'all' ? ['activeFilter', 'elevation-10'] : '']"
         @click="changeFilter('all')"
       >
         <v-avatar
@@ -17,6 +18,7 @@
       <v-chip
         v-show="remainingTodosCount > 0"
         class="green white--text"
+        :class="[filter === 'todo' ? ['activeFilter', 'elevation-10'] : '']"
         @click="changeFilter('todo')"
       >
         <v-avatar
@@ -30,6 +32,7 @@
       <v-chip
         v-show="doneTodosCount > 0"
         class="orange white--text"
+        :class="[filter === 'done' ? ['activeFilter', 'elevation-10'] : '']"
         @click="changeFilter('done')"
       >
         <v-avatar
@@ -45,6 +48,7 @@
         <v-chip
           v-show="laterTodoCount > 0"
           class="orange lighten-1 white--text"
+          :class="[filter === 'later' ? ['activeFilter', 'elevation-10'] : '']"
           @click="changeFilter('later')"
         >
           <v-avatar
@@ -57,6 +61,7 @@
         <v-chip
           v-show="importantTodoCount > 0"
           class="red lighten-1 white--text"
+          :class="[filter === 'important' ? ['activeFilter', 'elevation-10'] : '']"
           @click="changeFilter('important')"
         >
           <v-avatar
@@ -82,7 +87,8 @@ export default {
       doneTodosCount: 'todolist/doneTodosCount',
       remainingTodosCount: 'todolist/remainingTodosCount',
       importantTodoCount: 'todolist/importantTodoCount',
-      laterTodoCount: 'todolist/laterTodoCount'
+      laterTodoCount: 'todolist/laterTodoCount',
+      filter: 'todolist/filter'
     })
   },
   methods: {
@@ -92,3 +98,5 @@ export default {
   }
 }
 </script>
+
+<style src="~/assets/filters.css"></style>

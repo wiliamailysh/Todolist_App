@@ -45,6 +45,9 @@ export const getters = {
     } else {
       return state.list
     }
+  },
+  filter: (state) => {
+    return state.filter
   }
 }
 
