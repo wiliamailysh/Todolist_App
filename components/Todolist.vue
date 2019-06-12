@@ -8,6 +8,9 @@
         <!-- Add a new task -->
         <input type="text" class="new-todo" placeholder="Ajouter une tâche" @keyup.enter="addTodo">
 
+        <!-- Filters - Chips above todolist -->
+        <todo-filters />
+
         <!-- Todolist elements -->
         <todo-elements />
       </v-card>
@@ -20,10 +23,12 @@
 import { mapActions } from 'vuex'
 
 // Import Components
+import TodoFilters from '~/components/TodoFilters.vue'
 import TodoElements from '~/components/TodoElements.vue'
 
 export default {
   components: {
+    TodoFilters,
     TodoElements
   },
   methods: {
