@@ -9,3 +9,12 @@
   width: 100%;
   font-size: 24px;
 }
+
+/* Border-left style on done and todo elements */
+.ongoingtask {
+  border-left: 4px solid #4CAF50 !important;
+}
+
+.completedtask {
+  border-left: 4px solid #F29706 !important;
+}

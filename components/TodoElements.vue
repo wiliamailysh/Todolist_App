@@ -1,6 +1,11 @@
 <template>
   <div>
-    <v-card v-for="todo in filteredTodos" :key="todo.id" class="pa-3 my-4">
+    <v-card
+      v-for="todo in filteredTodos"
+      :key="todo.id"
+      class="pa-3 my-4"
+      :class="{completedtask: todo.done, ongoingtask: !todo.done}"
+    >
       <v-layout row wrap align-center>
         <!-- Chekbox element -->
         <v-flex xs1>
