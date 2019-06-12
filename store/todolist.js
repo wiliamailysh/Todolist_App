@@ -20,7 +20,7 @@ export const mutations = {
     // Switch todo state
     todo.done = !todo.done
   },
-  remove (state, todo) {
+  remove(state, todo) {
     // Remove the right element
     state.list.splice(state.list.indexOf(todo), 1)
   }
@@ -37,7 +37,7 @@ export const actions = {
   toggle(context, e) {
     context.commit('toggle', e)
   },
-  removeTodo (context, todo) {
+  removeTodo(context, todo) {
     context.commit('remove', todo)
   }
 }
