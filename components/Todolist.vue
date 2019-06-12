@@ -8,9 +8,8 @@
         <!-- Add a new task -->
         <input type="text" class="new-todo" placeholder="Ajouter une tâche" @keyup.enter="addTodo">
 
-        <v-card v-for="todo in allTodos" :key="todo.id">
-          {{ todo.text }}
-        </v-card>
+        <!-- Todolist elements -->
+        <todo-elements />
       </v-card>
     </v-container>
   </div>
@@ -18,16 +17,14 @@
 
 <script>
 // import mapHelpers
-import { mapActions, mapGetters } from 'vuex'
+import { mapActions } from 'vuex'
+
+// Import Components
+import TodoElements from '~/components/TodoElements.vue'
 
 export default {
   components: {
-
-  },
-  computed: {
-    ...mapGetters({
-      allTodos: 'todolist/allTodos'
-    })
+    TodoElements
   },
   methods: {
     ...mapActions({
