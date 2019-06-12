@@ -3,3 +3,9 @@
 	color: #d9d9d9;
 	text-decoration: line-through;
 }
+
+/* Edit input element */
+.editing-task {
+  width: 100%;
+  font-size: 24px;
+}

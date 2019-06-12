@@ -1,3 +1,10 @@
+const match = function (myExpresion, comparedExpression, tagArray, tagToAdd) {
+  // Check if input value contain an expression (ex. #important, #later)
+  if (myExpresion.match(comparedExpression)) {
+    tagArray.push(tagToAdd)
+  }
+}
+
 export const state = () => ({
   list: [],
   editing: null
@@ -16,21 +23,15 @@ export const mutations = {
   addTodo(state, payload) {
     const tagArray = []
 
-    // Check if input value contain #important
-    if (payload.text.match(/#important/gm)) {
-      tagArray.push('important')
+    // // Check if input value contain #important
+    match(payload.text, /#important/gm, tagArray, 'important')
+    // Remove #important from text-value
+    payload.text = payload.text.replace('#important', '')
 
-      // Remove #important from text-value
-      payload.text = payload.text.replace('#important', '')
-    }
-
-    // Check if input value contain #later
-    if (payload.text.match(/#later/gm)) {
-      tagArray.push('later')
-
-      // Remove #later from text-value
-      payload.text = payload.text.replace('#later', '')
-    }
+    // // Check if input value contain #important
+    match(payload.text, /#later/gm, tagArray, 'later')
+    // Remove #important from text-value
+    payload.text = payload.text.replace('#later', '')
 
     state.list.unshift({
       text: payload.text,
@@ -61,6 +62,15 @@ export const mutations = {
 
     // Update text and tag list with new values
     todo.text = payload.newText
+  },
+  deleteTag(state, payload) {
+    const todo = state.list.find(todo => todo.id === payload.id)
+    const tagToDelete = todo.tag.find(tag => tag === payload.tagType)
+    todo.tag.splice(todo.tag.indexOf(tagToDelete), 1)
+  },
+  addTag(state, payload) {
+    const todo = state.list.find(todo => todo.id === payload.id)
+    todo.tag.push(payload.tagToAdd)
   }
 }
 
