@@ -42,7 +42,11 @@
         </v-avatar>
         <span>Faites</span>
       </v-chip>
-      <v-chip color="grey" text-color="white" v-show="doneTodosCount > 0" @click="removeDoneTodos">
+      <v-chip
+        v-show="doneTodosCount > 0"
+        class="grey white--text"
+        @click="removeDoneTodos"
+      >
         <span>Supprimer les tâches finies</span>
       </v-chip>
     </v-flex>
