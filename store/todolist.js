@@ -1,7 +1,10 @@
 const match = function (myExpresion, comparedExpression, tagArray, tagToAdd) {
   // Check if input value contain an expression (ex. #important, #later)
   if (myExpresion.match(comparedExpression)) {
-    tagArray.push(tagToAdd)
+    // Check if tagArray already contains tagToAdd
+    if (!tagArray.includes(tagToAdd)) {
+      tagArray.push(tagToAdd)
+    }
   }
 }
 
@@ -59,9 +62,21 @@ export const mutations = {
   updateText(state, payload) {
     // Actual todo-task and todo tag list
     const todo = state.list.find(todo => todo.id === payload.id)
+    const tagArray = todo.tag
+
+    // Check if updated text contains #important
+    match(payload.newText, /#important/gm, tagArray, 'important')
+    // Remove #important from text-value
+    payload.newText = payload.newText.replace('#important', '')
+
+    // Check if updated text contains #later
+    match(payload.newText, /#later/gm, tagArray, 'later')
+    // Remove #important from text-value
+    payload.newText = payload.newText.replace('#later', '')
 
     // Update text and tag list with new values
     todo.text = payload.newText
+    todo.tag = tagArray
   },
   deleteTag(state, payload) {
     const todo = state.list.find(todo => todo.id === payload.id)
