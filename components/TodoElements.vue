@@ -92,7 +92,7 @@
             </v-chip>
             <!-- Delete element chip -->
             <v-chip
-              color="red lighten-1 white--text"
+              class="red lighten-1 white--text"
               @click="removeTodo(todo)"
             >
               <v-icon>delete</v-icon>
