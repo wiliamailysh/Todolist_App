@@ -31,71 +31,73 @@
         </v-flex>
         <!-- Actions -->
         <v-flex xs3>
-          <!-- Later element chip -->
-          <v-chip
-            fab
-            class="white--text"
-            :class="{orange: todo.tag.includes('later'), grey: !todo.tag.includes('later')}"
-          >
-            <v-icon
-              v-if="todo.tag.includes('later')"
+          <div class="right">
+            <!-- Later element chip -->
+            <v-chip
+              fab
+              class="white--text"
+              :class="{orange: todo.tag.includes('later'), grey: !todo.tag.includes('later')}"
             >
-              query_builder
-            </v-icon>
-            <v-icon
-              v-else
-              @click="addTag(todo, 'later')"
-            >
-              query_builder
-            </v-icon>
-            <div v-show="todo.tag.includes('later')">
-              <span class="ml-2 hidden-lg-and-down">Later</span>
               <v-icon
-                small
-                class="ml-2"
-                @click.prevent="deleteTag(todo, 'later')"
+                v-if="todo.tag.includes('later')"
               >
-                close
+                query_builder
               </v-icon>
-            </div>
-          </v-chip>
+              <v-icon
+                v-else
+                @click="addTag(todo, 'later')"
+              >
+                query_builder
+              </v-icon>
+              <div v-show="todo.tag.includes('later')">
+                <span class="ml-2 hidden-lg-and-down">Later</span>
+                <v-icon
+                  small
+                  class="ml-2"
+                  @click.prevent="deleteTag(todo, 'later')"
+                >
+                  close
+                </v-icon>
+              </div>
+            </v-chip>
 
-          <!-- Important element chip -->
-          <v-chip
-            slot="activator"
-            fab
-            class="white--text"
-            :class="{red: todo.tag.includes('important'), grey: !todo.tag.includes('important')}"
-          >
-            <v-icon
-              v-if="todo.tag.includes('important')"
+            <!-- Important element chip -->
+            <v-chip
+              slot="activator"
+              fab
+              class="white--text"
+              :class="{red: todo.tag.includes('important'), grey: !todo.tag.includes('important')}"
             >
-              label_important
-            </v-icon>
-            <v-icon
-              v-else
-              @click="addTag(todo, 'important')"
-            >
-              label_important
-            </v-icon>
-            <div v-show="todo.tag.includes('important')">
-              <span class="ml-2 hidden-lg-and-down">Important</span>
               <v-icon
-                small
-                class="ml-2"
-                @click.prevent="deleteTag(todo, 'important')"
+                v-if="todo.tag.includes('important')"
               >
-                close
+                label_important
               </v-icon>
-            </div>
-          </v-chip>
-          <!-- Delete element chip -->
-          <v-chip
-            color="red lighten-1 white--text"
-            @click="removeTodo(todo)"
-          >
-            <v-icon>delete</v-icon>
-          </v-chip>
+              <v-icon
+                v-else
+                @click="addTag(todo, 'important')"
+              >
+                label_important
+              </v-icon>
+              <div v-show="todo.tag.includes('important')">
+                <span class="ml-2 hidden-lg-and-down">Important</span>
+                <v-icon
+                  small
+                  class="ml-2"
+                  @click.prevent="deleteTag(todo, 'important')"
+                >
+                  close
+                </v-icon>
+              </div>
+            </v-chip>
+            <!-- Delete element chip -->
+            <v-chip
+              color="red lighten-1 white--text"
+              @click="removeTodo(todo)"
+            >
+              <v-icon>delete</v-icon>
+            </v-chip>
+          </div>
         </v-flex>
       </v-layout>
     </v-card>
