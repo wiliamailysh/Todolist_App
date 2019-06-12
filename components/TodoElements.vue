@@ -14,7 +14,10 @@
         </v-flex>
         <!-- Actions -->
         <v-flex xs3>
-
+          <!-- Delete element chip -->
+          <v-chip color="red lighten-1 white--text" @click="removeTodo(todo)">
+            <v-icon>delete</v-icon>
+          </v-chip>
         </v-flex>
       </v-layout>
     </v-card>
@@ -36,7 +39,8 @@ export default {
   methods: {
     ...mapActions({
       addTodo: 'todolist/addTodo',
-      toggle: 'todolist/toggle'
+      toggle: 'todolist/toggle',
+      removeTodo: 'todolist/removeTodo'
     })
   }
 }
