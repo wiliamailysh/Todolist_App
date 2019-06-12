@@ -20,7 +20,10 @@
           <!-- Editing section, active when dblclick -->
           <input
             v-show="todo === editingTodo"
-            type="text">
+            type="text"
+            @change="updateText($event, todo)"
+            @keyup.enter="doneEdit"
+            @blur="doneEdit">
         </v-flex>
         </v-flex>
         <!-- Actions -->
@@ -52,11 +55,18 @@ export default {
     ...mapActions({
       addTodo: 'todolist/addTodo',
       toggle: 'todolist/toggle',
-      removeTodo: 'todolist/removeTodo'
+      removeTodo: 'todolist/removeTodo',
+      doneEdit: 'todolist/doneEdit'
     }),
     editTodo(todo, event) {
       this.$store.commit('todolist/editTodo', todo)
       event.target.nextSibling.nextSibling.value = todo.text
+    },
+    updateText(event, todo) {
+      this.$store.commit('todolist/updateText', {
+        newText: event.target.value,
+        id: todo.id
+      })
     }
   }
 }

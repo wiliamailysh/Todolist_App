@@ -31,6 +31,17 @@ export const mutations = {
   editTodo(state, todo) {
     // State editing stores actual todo-element
     state.editing = todo
+  },
+  doneEdit(state) {
+    // Edit task finished, state editing changes to null
+    state.editing = null
+  },
+  updateText(state, payload) {
+    // Actual todo-task and todo tag list
+    const todo = state.list.find(todo => todo.id === payload.id)
+
+    // Update text and tag list with new values
+    todo.text = payload.newText
   }
 }
 
@@ -47,5 +58,8 @@ export const actions = {
   },
   removeTodo(context, todo) {
     context.commit('remove', todo)
+  },
+  doneEdit(context) {
+    context.commit('doneEdit')
   }
 }
