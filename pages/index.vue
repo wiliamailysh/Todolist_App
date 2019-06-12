@@ -1,5 +1,7 @@
 <template>
   <div>
+    <!-- "How to use it ?" section -->
+    <manual />
     <!-- TodoList Component containing the whole app -->
     <todolist />
   </div>
@@ -7,10 +9,12 @@
 
 <script>
 import Todolist from '~/components/Todolist.vue'
+import Manual from '~/components/Manual.vue'
 
 export default {
   components: {
-    Todolist
+    Todolist,
+    Manual
   }
 }
 </script>
