@@ -3,7 +3,9 @@ export const state = () => ({
 })
 
 export const getters = {
-
+  allTodos: (state) => {
+    return state.list
+  }
 }
 
 export const mutations = {
