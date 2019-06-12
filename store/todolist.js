@@ -10,13 +10,11 @@ const match = function (myExpresion, comparedExpression, tagArray, tagToAdd) {
 
 export const state = () => ({
   list: [],
-  editing: null
+  editing: null,
+  filter: 'all'
 })
 
 export const getters = {
-  allTodos: (state) => {
-    return state.list
-  },
   editingTodo: (state) => {
     return state.editing
   },
@@ -34,6 +32,19 @@ export const getters = {
   },
   laterTodoCount: (state) => {
     return state.list.filter(todo => todo.tag.includes('later')).length
+  },
+  filteredTodos: (state, getters) => {
+    if (state.filter === 'todo') {
+      return state.list.filter(todo => !todo.done)
+    } else if (state.filter === 'done') {
+      return state.list.filter(todo => todo.done)
+    } else if (state.filter === 'important') {
+      return state.list.filter(todo => todo.tag.includes('important'))
+    } else if (state.filter === ('later')) {
+      return state.list.filter(todo => todo.tag.includes('later'))
+    } else {
+      return state.list
+    }
   }
 }
 

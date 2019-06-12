@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-card v-for="todo in allTodos" :key="todo.id" class="pa-3 my-4">
+    <v-card v-for="todo in filteredTodos" :key="todo.id" class="pa-3 my-4">
       <v-layout row wrap align-center>
         <!-- Chekbox element -->
         <v-flex xs1>
@@ -113,8 +113,8 @@ export default {
   },
   computed: {
     ...mapGetters({
-      allTodos: 'todolist/allTodos',
-      editingTodo: 'todolist/editingTodo'
+      editingTodo: 'todolist/editingTodo',
+      filteredTodos: 'todolist/filteredTodos'
     })
   },
   methods: {
