@@ -19,6 +19,21 @@ export const getters = {
   },
   editingTodo: (state) => {
     return state.editing
+  },
+  allTodosCount: (state) => {
+    return state.list.length
+  },
+  doneTodosCount: (state) => {
+    return state.list.filter(todo => todo.done).length
+  },
+  remainingTodosCount: (state) => {
+    return state.list.filter(todo => !todo.done).length
+  },
+  importantTodoCount: (state) => {
+    return state.list.filter(todo => todo.tag.includes('important')).length
+  },
+  laterTodoCount: (state) => {
+    return state.list.filter(todo => todo.tag.includes('later')).length
   }
 }
 
