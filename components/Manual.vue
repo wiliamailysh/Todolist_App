@@ -2,11 +2,11 @@
   <v-container>
     <v-expansion-panel>
       <v-expansion-panel-content>
-        <template v-slot:header>
+        <!-- <template v-slot:header>
           <div class="grey--text headline text-xs-center pa-4 text-uppercase">
             Todolist - Fonctionnalités principales
           </div>
-        </template>
+        </template> -->
         <v-card>
           <v-card-text>
             <v-list class="grey--text text--darken-2">
